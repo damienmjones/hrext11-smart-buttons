@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HREXT11 R00lz!</title>
+  <script
+          src="https://code.jquery.com/jquery-3.3.1.js"
+          integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+          crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<h1>Smart Buttons</h1>
+
+
+<h2>Dave's CRUDdy starter app</h2>
+  <div class="container-everything">
+    <div class="container-text">
+      <label for="name">Key:</label><input type="text" id="key">
+      <label for="name">Value:</label><input type="text" id="value">
+    </div>
+    <div class="container-button">
+        <input class="input-button get" type="button" value="Get">
+      <input class="input-button create" type="button" value="Create">
+      <input class="input-button update" type="button" value="Update">
+      <input class="input-button delete" type="button" value="Delete">
+      <input class="input-button clear" type="button" value="Nuke (Clear)">
+    </div>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Key</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+
+<h2>My old button generator code for reference</h2>
+
+<div class="buttons">
+  <button class="randomize">randomize</button>
+  <button class="add-squares">add squares</button>
+</div>
+<div class="container">
+</div>
+
+<h2>Sample of what a button input field might look like</h2>
+<main>
+
+<div class="automation">
+  <button class="create">+ New user</button>
+</div>
+
+<h3>Damien</h3>
+<span class="edit">Edit</span>
+
+<div class="automation">
+    <p>
+        <label for="something">User</label>
+        <input type = "text" value="Damien"/>
+      </p>
+    <p>
+        <label for="something">IFTTT ID</label>
+        <input type = "text" value="328687326532987"/>
+    </p>
+    <p>
+        <button class="delete">Delete</button>
+        <button class="cancel">Cancel</button>
+        <button class="save">Save</button>
+    </p>
+</div>
+
+<div class="automation">
+  <button class="create">+ New automation</button>
+</div>
+
+<div class="automation">
+    <p>
+        <button class="automate hrext11_red">My Automation</button>
+    </p>
+    <p>
+        Click count: <span class="click_count">0</span>
+        <span class="edit">Edit</span>
+    </p>
+
+    <p>
+      <label for="something">Label</label>
+      <input type = "text" value="My Automation"/>
+    </p>
+    <p>
+      <label for="something">IFTTT ID</label>
+      <input class="id" type = "text" value="hrext11_red">
+
+      <select class="id">
+          <option >hrext11_orange</option>
+          <option >hrext11_dim_white</option>
+          <option >hrext11_bright_white</option>
+          <option >hrext11_pink</option>
+          <option >hrext11_red</option>
+          <option >hrext11_green_fade</option>
+          <option >hrext11_blue_blink</option>
+          <option >hrext11_disco</option>
+        </select>
+
+      <span class="test">Test</span>
+    </p>
+    <p>
+    <select>
+      <label for="something">Color</label>
+      <option class="white" value="white">White (default)</option>
+      <option class="yellow" value="yellow">Yellow</option>
+      <option class="orange" value="orange">Orange</option>
+      <option class="red" value="red">Red</option>
+      <option class="pink" value="pink">Pink</option>
+      <option class="green" value="green">Green</option>
+      <option class="blue" value="blue">Blue</option>
+      <option class="rainbow" value="rainbow">Rainbow</option>
+    </select>
+    </p>
+    <p>
+      <button class="delete">Delete</button>
+      <button class="cancel">Cancel</button>
+      <button class="save">Save</button>
+    </p>
+</div>
+</main>
+
+<!-- hrext11_orange
+hrext11_dim_white
+hrext11_bright_white
+hrext11_pink
+hrext11_red
+hrext11_green_fade
+hrext11_blue_blink
+hrext11_disco-->
+
+  <script src="app/app.js"></script>
+</body>
+</html>

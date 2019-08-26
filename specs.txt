@@ -1,0 +1,67 @@
+Button automation scheduler
+
+The problem being solved, which, admittedly is pretty personal to me:
+Right now, I have an internet-enabled physical button that can be configured to ping a specific (but static) URL
+The Smart Lights I have allow you to write "scenes" that can you can address from a URL in IFTTT.
+It works OK, but I want the button to be smart enough to do different things at different times
+
+TO THAT END:
+I want to make a scheduler that allows you to enter in (potentially overlapping) scheduling "rules" that dictate what automation gets executed by a buton press based on the current time and date.
+
+
+
+Prerequisites (already done)
+----------------------------
+Make a bunch of test lighting schemas via IFTTT
+Make PHP page that hits a previously-created IFTTT process by name
+Buy an internet-enabled "Flic" button that can be configured to hit a URL
+
+
+Prerequisites (not yet done)
+----------------------------
+
+ADMIN FUNCTIONALITY
+
+Make data types (getters/setters) for individual automations
+Make data entry fields for individual automations
+Make container for each automation in order to view/filter/edit.
+* Name
+* Description
+* URL
+* Color ?
+
+Make data types (getters/setters) for individual automations
+Make data entry fields for individual automations
+Make container for each automation in order to view/filter/edit.
+Make data entry for each calendaring rule:
+* Time range
+* [parameters that represent date range: daily, weekly, etc] - need to clarify
+* Selected automation
+NOTE: Require button to have default action
+
+Logic to calculate based on the present time which automation should apply
+Use weighted cascading logic, if possible - (base this on recency of rule?)
+
+Save Process
+
+
+
+
+The Awesome Parts
+
+Test buttons:
+Test automation in real time.
+Display (not execute) whatever the button should do right now (bonus: at any particular time)
+Execute whatever the button should do right now (bonus: at any particular time)
+
+Display the weekly automation calendar in a friendly way
+
+
+EXTRA BONUS FUNCTIONALITY
+
+Allow for one-time overrides based on date ranges
+
+
+Things to learn to make this work
+
+Write JSON to a file (PHP?)

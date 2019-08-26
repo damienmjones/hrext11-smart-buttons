@@ -1,0 +1,86 @@
+/*
+  <div class="container-everything">
+    <div class="container-text">
+      <label for="name">Key:</label><input type="text" id="key">
+      <label for="name">Value:</label><input type="text" id="value">
+    </div>
+    <div class="container-button">
+      <input class="input-button" type="button" value="Create">
+      <input class="input-button" type="button" value="Update">
+      <input class="input-button" type="button" value="Delete">
+      <input class="input-button" type="button" value="Nuke (Clear)">
+    </div>
+  </div>
+  */
+
+.container-everything {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container-button {
+  margin: 20px;
+  display: flex;
+  justify-content: space-around;
+  width: 425px;
+}
+
+th {
+  border: 2px solid;
+}
+
+table {
+  border: 2px solid black;
+}
+td {
+  border: 2px solid;
+}
+
+
+
+
+/* taken from my *intro to front-end* code*/
+
+.buttons {
+	display: flex;
+    width:510px;
+    justify-content: center;
+    margin: 2px;
+}
+
+.container {
+	display: flex;
+	flex-direction: row;
+    width:510px;
+    border:2px solid black;
+    flex-wrap: wrap-reverse;
+    justify-content: center;
+}
+
+.box {
+    margin, padding: 0px;
+    border:1px solid black;
+    height: 100px;
+    width: 100px;
+    display:inline-block;
+}
+
+div.automation {
+  width:100%;
+  max-width: 720px;
+
+	display: flex;
+	flex-direction: row;
+    border:2px solid blue;
+    justify-content: center;
+
+
+}
+button.automate {
+  width:90%;
+  padding:20px;
+  border-radius:20px;
+  font-size:2rem;
+}

@@ -1,0 +1,158 @@
+MINIMUM (VIABLE) PRODUCT
+------------------------
+
+PHASE ONE of this (follows).
+
+Initial ambitions got PARED WAY DOWN, and then I went into pretty excruciating details about what remained. I scrapped the "physical button" part entirely in favor of something more visually demonstrable but that potentially held the framework to accomplish what I was hoping to at a later date. Broke the remaining ambitions into two parts. If I only get through one, awesome, but I'm going to shoot for both.
+
+----------------------------------------------------------------------------
+
+
+PHASE ZERO: PREREQUISITES TO CODING
+-----------
+Stage 1:
+Get smart lights (already had)
+
+Stage 2:
+Set up IFTTT and get an account that allows for Webhooks (already did)
+
+Stage 3:
+Set up some sample web hooks to test with and demo (just did)
+
+
+
+PHASE ONE: MAKE SOME BUTTONS!
+---------
+
+Stage 1:
+Get a manually coded button working through JQuery AJAX. i.e. script an event that can execute a testable ping to a hardcoded URL.
+
+Stage 2:
+Allow the user to make clones of that button with a New button (like the box-generator from previous work) that do the same thing. Use flex-box to keep the "New" button in the top left corner and all new buttons will be added to the top.
+
+Stage 3:
+Implement the CRUD: Make a set of fields buttons below each button to modify its label, invocation, and color.
+(colors and methods will be hard-coded using a drop-down). Save the data as an array of objects under a "key" corresponding to the USER ID (my unique IFTTT key)
+
+Something like:
+{users: [
+          {id: "985643098509435",
+          name: "damien",
+
+          /* then all the butons get placed here: */
+
+          automations: [ {
+                        id:"red_scene_2",
+                        display_name:"Roxanne",
+                        color:"red",
+                        clicked:5,
+                    },
+                    {
+                        id:"blue_blink_3",
+                        name:"Blue Alert",
+                        color:"blue",
+                        clicked:2,
+                    }
+                  ]
+        }
+}
+
+Stage 4:
+Make a function to redraw the page based on the existing contents of LocalStorage, and make it so that if the page loads up and there is this kind of data in LocalStorage, the screen will draw out all of those buttons, newest one first.
+
+Stage 5: Allow the button to delete itself.
+
+Stage 6:
+Style it for phones! Pretty it up a bit and add some UX; make the edit fields show and hide with an "edit" link; make them "save" or "cancel" with a button click that re-hides the edit fields. Make the button preview update in real-time. Make classes for each color style and make them look pretty. Mabe make the select items display using that same style. Put in some headings including the user name, and some hideable descriptive text about what's going on.
+
+Stage 7:
+Allow a "move to top" button so people can organize their favorites without having to implement it in too complicated of a way. (all it should do is "splice" the selected one and "push" it to the end, then refresh the page)
+
+Stage 8:
+Make it keep track of the number of times the button is pressed, and find a way to display that that looks pretty, maybe?
+
+Stage 9:
+Add user-editing: Assume no data at the beginning, so the first step will be someone typing in a user name and IFTTT ID (required) and saving it - automations won't run without that. After this, the user can start making and testing automations attached to that user using the framework above. This is going to be a little complicated, cause while I can probably reuse a lot of the input code from above, I'll also need to start putting in things like delete logic - if someone tries to delete a user that has buttons in it, there will need to be a warning that you're going to delete all the buttons associated with that user, etc)
+
+Stage 10:
+To allow other people to demo it, go back and make a couple of links that auto-populate my own user data, and turn the text-box for the automation name into a select box full of the automations I've chosen to allow people to use.
+
+hrext11_orange
+hrext11_dim_white
+hrext11_bright_white
+hrext11_pink
+hrext11_red
+hrext11_green_fade
+hrext11_blue_blink
+hrext11_disco
+
+
+TEST! RETEST!
+
+
+
+PHASE TWO: FAKE SCHEDULE THEM!
+---------
+
+Stage 1:
+Figure out how to save a file (to (PHP? through a POST?)
+
+Stage 2:
+Copy this page, and call it "scheduler" or something.
+
+Instead of (or in addition to?) the buttons, there's now a section called Scheduling with a set of Rules.
+Rules, in the data sense, would mirror the Buttons. The user should get an interestingly formatted date picker (days of the week, not specific dates, for now), and be able to pick a day/time for an automation to take place
+
+Something like:
+{users: [
+          {id: "985643098509435",
+          name: "damien",
+
+          /* then all the butons get placed here: */
+
+          automations: [ {
+                        id:"red_scene_2",
+                        display_name:"Roxanne",
+                        color:"red",
+                        clicked:5,
+                        schedule: [ {
+                            display_name:"Early Wakeup",
+                            day: 0,
+                            start_hour: 5,
+                            start_min: 0
+                        },  {
+                            display_name:"Late Night",
+                            day: 0,
+                            start_hour: 5,
+                            start_min: 0
+                        } ]
+                    }]
+
+                    },
+                    {
+                        id:"blue_blink_3",
+                        name:"Blue Alert",
+                        color:"blue",
+                        clicked:2,
+                    }
+                  ]
+        },
+}
+
+Stage 3:
+Save this data to a table-like list of rules, sorted visually by date (some combination of day + 24-hour date + minute)
+
+Stage 4:
+Add validation stuff similar to the "user" problem - warn users that if they delete the button/automation, they will automatically delete all associated scheduled events
+
+Stage 5:
+Figure out logic to determine whether the current date/time IS the one specified.
+
+Stage 6:
+If so, figure out how to write the URL for the associated automation into a redirect script for a file pingable from the outside world.
+
+Stage 7:
+Set up a cron job to make this setup logic work, AND (another?) job to ping the page specified by that other page, if any. Ideal case would be that all three actions happen on the same page with different params (probably requires some PHP)
+
+Stage 8:
+SO MUCH EXTRA BONUS: visually represent the schedule with a tabular "week at a glance" block, and clicking a block brings up its associated rule.
