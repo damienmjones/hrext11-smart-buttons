@@ -8,39 +8,27 @@
 */
 
 //localStorage abstraction
-var get = function(key) {
-  return window.localStorage.getItem(key);
-}
+const LS = window.localStorage;
 
-var create = function(key, value) {
-  return window.localStorage.setItem(key, value);
-}
+// make this into an object later
 
-var update = function(key, value) {
-  return window.localStorage.setItem(key, value);
-}
+// const automation(id, name, color, ) {
+//   this.id
+// }
 
-var remove = function(key) {
-  return window.localStorage.removeItem(key);
-}
+const get = function(key) {return LS.getItem(key);}
+const create = function(key, value) {return LS.setItem(key, value);}
+const update = function(key, value) {return LS.setItem(key, value);}
+const remove = function(key) {return LS.removeItem(key);}
+const count = function(key) {return LS.length;}
+const getKey = function(index) {return LS.key(index)}
+const clear = function(key) {return LS.clear();}
 
-var clear = function() {
-  return window.localStorage.clear();
-}
-
-var getItemCount = function() {
-  return window.localStorage.length;
-}
-
-var getKey = function(index) {
-  return window.localStorage.key(index);
-}
-
-var displayData = function() {
+const  displayData = function() {
   //figure out how many items are in local storage
   //loop through all items in localstorage
   $('tbody').html('');
-  for (var i = 0; i < getItemCount(); i++) {
+  for (var i = 0; i < count(); i++) {
     $('tbody').append(
       `<tr>
         <td>${getKey(i)}</td>
@@ -131,18 +119,25 @@ const generateRandomColorValue = () => {
 //
 $(document).ready(function(){
 
-	addSquare();
+  addSquare()
 
   $('.add-squares').click(addSquare)
 
-  $('.randomize').click(function() {
-  		$('.box').css( "background-color", generateRandomColorValue);
-  })
-
   function addSquare() {
-		var $box = $('<div class="box"></div>');
-		$box.css( "background-color", generateRandomColorValue);
-		$box.appendTo($('.container'));
+    let $newform = $('.box:first').clone()
+    $newform.css( "background-color", generateRandomColorValue);
+    // initialize the form and give it event listeners
+    $newform.insertAfter(".box:first");
+    initSquare();
   }
+
+  function initSquare() {
+    $(".box:first").hide();
+    $('.box').click(function() {
+  		$(this).css( "background-color", generateRandomColorValue);
+    })
+    $(".box:not(:first)").show();
+  }
+
 
 });
