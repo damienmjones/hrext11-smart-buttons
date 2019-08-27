@@ -43,27 +43,22 @@ td {
 
 /* taken from my *intro to front-end* code*/
 
-.buttons {
-	display: flex;
-    width:510px;
-    justify-content: center;
-    margin: 2px;
-}
 
 .container {
 	display: flex;
 	flex-direction: row;
-    width:510px;
+    width:100%;
+    max-width: 720px;
     border:2px solid black;
-    flex-wrap: wrap-reverse;
+    flex-wrap: wrap;
     justify-content: center;
 }
 
 .box {
     margin, padding: 0px;
     border:1px solid black;
-    height: 100px;
-    width: 100px;
+    width:100%;
+    max-width: 720px;
     display:inline-block;
 }
 
@@ -79,8 +74,14 @@ div.automation {
 
 }
 button.automate {
-  width:90%;
+  /* width:90%; */
   padding:20px;
   border-radius:20px;
   font-size:2rem;
+}
+
+section.edit {
+  border:5px solid white;
+  background-color: #999;
+  display:none;
 }

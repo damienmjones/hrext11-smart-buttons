@@ -1,12 +1,3 @@
-/*
- ### Basic Reqs
-- [x] Where to store data? (localstorage)
-- [x] How to caputure data? (web form)
-- [ ] How to modify data? (update action, delete action)
-- [ ] How to view data? (style?)
-- [ ] UI/UX considerations (how are we going to use this)
-*/
-
 //localStorage abstraction
 const LS = window.localStorage;
 
@@ -22,10 +13,9 @@ const update = function(key, value) {return LS.setItem(key, value);}
 const remove = function(key) {return LS.removeItem(key);}
 const count = function(key) {return LS.length;}
 const getKey = function(index) {return LS.key(index)}
-const clear = function(key) {return LS.clear();}
+const clear = function(key) {LS.clear();displayData();}
 
 const  displayData = function() {
-  //figure out how many items are in local storage
   //loop through all items in localstorage
   $('tbody').html('');
   for (var i = 0; i < count(); i++) {
@@ -41,12 +31,6 @@ const  displayData = function() {
 
 $(function() {
   displayData();
-
-  $('.get').click(function() {
-    var key = $('#key').val();
-    console.log(get(key));
-    displayData();
-  })
 
   $('.create').click(function() {
     var key = $('#key').val();
@@ -83,24 +67,8 @@ $(function() {
     }
   })
 
-  $('.clear').click(function() {
-    if (getItemCount() === 0) {
-      alert('nothing to clear');
-    } else {
-      console.log(clear());
-      displayData();
-    }
-  })
 
-
-$(".hrext11_red").click(function() {
-  const makerKey = 'gJZzNn_HHmO3cogsCTnBy_-UNg1rOYaqo579Lepel7b';
-  const makerEvent = 'hrext11_red';
-  const makerURL = `https://maker.ifttt.com/trigger/${makerEvent}/with/key/${makerKey}`;
-  console.log(makerURL);
-  console.log($.ajax({url: makerURL}));
-})
-
+/* end document.ready */
 
 })
 
@@ -116,28 +84,54 @@ const generateRandomColorValue = () => {
   let blueValue = Math.floor((Math.random() * 256));
   return `rgb(${redValue}, ${greenValue}, ${blueValue})`;
 };
-//
+
 $(document).ready(function(){
 
   addSquare()
 
   $('.add-squares').click(addSquare)
+  $('button.clear-all').click(clear)
 
-  function addSquare() {
-    let $newform = $('.box:first').clone()
-    $newform.css( "background-color", generateRandomColorValue);
-    // initialize the form and give it event listeners
-    $newform.insertAfter(".box:first");
-    initSquare();
-  }
+  $('button.edit').click(function() {
+      console.log('edit')
+      $(this).siblings('section.edit').toggle();
+  })
 
-  function initSquare() {
-    $(".box:first").hide();
-    $('.box').click(function() {
-  		$(this).css( "background-color", generateRandomColorValue);
-    })
-    $(".box:not(:first)").show();
-  }
 
+  $('.save').click(function() {
+    console.log('save')
+    $(this).parent().hide();
+})
 
 });
+
+
+function addSquare() {
+  let $newform = $('.box:first').clone()
+  $newform.css( "background-color", generateRandomColorValue);
+  // initialize the form and give it event listeners
+
+  $newform.insertAfter(".box:first");
+  initSquare();
+}
+
+function initSquare() {
+  /* $(".box:first").hide(); */
+
+  $('.box').click(function() {
+    /* $(this).css( "background-color", generateRandomColorValue); */
+
+  })
+  $(".box:not(:first)").show();
+
+  $('button.automate').click(function() {
+    const makerKey = 'gJZzNn_HHmO3cogsCTnBy_-UNg1rOYaqo579Lepel7b';
+    const makerEvent = 'hrext11_red';
+    const makerURL = `https://maker.ifttt.com/trigger/${makerEvent}/with/key/${makerKey}`;
+    console.log('ajax: '+makerURL);
+    //console.log($.ajax({url: makerURL}));
+})
+
+
+
+}
