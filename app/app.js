@@ -1,10 +1,23 @@
 var ifttt_id = "gJZzNn_HHmO3cogsCTnBy_"
 
-
 $(function() {
 
   displayData();
-  $('.create').click(function() {
+
+
+
+  $('.create').click(createAutomation)
+
+  $('#ifttt').change(function() {
+    console.log('ifttt_id')
+    create('ifttt_id',  $(this).val() );
+    console.log(get('ifttt_id'))
+  })
+
+
+}) // end of document.ready
+
+const createAutomation = function() {
     var key = $('#key').val();
     var value = $('#value').val();
 
@@ -14,10 +27,7 @@ $(function() {
       create(key, value);
       displayData();
     }
-  })
-
-}) // end of document.ready
-
+}
 
 const displayData = function() {
   console.log('displayData')
@@ -25,17 +35,16 @@ const displayData = function() {
 
   for (var i = 0; i < count(); i++) {
     $('section#buttons').append(
-    `<div id="${getKey(i)}"><button class="automate">${get(getKey(i))}</button> <a class="delete" href="#">delete</a> <a class="edit" href="#">edit</a></div>`
+    `<div id="${getKey(i)}"><button class="automate">${get(getKey(i))}</button> <a class="favorite" href="#">↥ favorite</a> <a class="delete" href="#">✘ delete</a> <a class="edit" href="#">✎ edit</a></div>`
     )
   }
-  bindButtonEvents()
+  bindButtonEvents();
 }
 
 const bindButtonEvents = function() {
   console.log('bindButtonEvents')
   $('a.edit').click(function() {
     editButton( $(this).parent() );
-
   })
   $('a.delete').click(function() {
     deleteButton( $(this).parent() );
@@ -63,6 +72,7 @@ const deleteButton = function($div) {
 }
 
 const automateButton = function($div) {
+  //makerKey = get('ifttt)
     const makerAutomation = $div.attr('id')
     const makerKey = 'gJZzNn_HHmO3cogsCTnBy_-UNg1rOYaqo579Lepel7b';
     const makerURL = `https://maker.ifttt.com/trigger/${makerAutomation}/with/key/${makerKey}`;
