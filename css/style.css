@@ -1,47 +1,70 @@
-/*
-  <div class="container-everything">
-    <div class="container-text">
-      <label for="name">Key:</label><input type="text" id="key">
-      <label for="name">Value:</label><input type="text" id="value">
-    </div>
-    <div class="container-button">
-      <input class="input-button" type="button" value="Create">
-      <input class="input-button" type="button" value="Update">
-      <input class="input-button" type="button" value="Delete">
-      <input class="input-button" type="button" value="Nuke (Clear)">
-    </div>
-  </div>
-  */
-
-.container-everything {
-  margin: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+body, h1, h2, h3, h4 {
+  /*font-family:Arial, Helvetica, sans-serif;*/
 }
 
-.container-button {
-  margin: 20px;
-  display: flex;
-  justify-content: space-around;
-  width: 425px;
+header {
+  width:100%;
+  max-width: 720px;
+  margin: auto;
+  align: center;
+  border:1px solid blue;
 }
 
-th {
-  border: 2px solid;
+/* START - STUPID STUFF RELATED TO HEADER IMAGE */
+
+button.title {
+  font-family: 'Arial';
+  font-weight: bold;
+  background-color: #f2e4ac;
+  color:#423605;
+
 }
 
-table {
-  border: 2px solid black;
+button.title div {
+  width:100px;
+  display:inline-block;
+  vertical-align: top;
+  align:left;
+  background-color:#423605;
+  color:#f2e4ac;
+  border-radius:10px;
 }
+
+#smartbutton {
+  padding:0px 8px 0px 5px;
+  border-radius:0px 0px 0px 10px;
+  margin-bottom:20px;
+  background: linear-gradient(to bottom right, #8c7851, #423605);
+}
+#control {
+  transform: rotate(340deg);
+  margin:20px -5px 0px -20px;
+  padding:0px 12px 0px 8px;
+  border-radius: 20px 0px 0px 9px;
+  background-color:#423605;
+}
+#panel {
+  transform: rotate(355deg);
+  margin: 0px 0px 30px -10px;
+  background-color:black;
+}
+#notabutton {
+
+  font-family: 'Charmonman', cursive;
+  display:block;
+  font-size:1.4rem;
+  text-align:center;
+  width:100%;
+  color:#423605;
+  background-color:#f2e4ac;
+  border:0px solid black;
+}
+
+/* END - STUPID STUFF RELATED TO HEADER IMAGE */
+
 td {
   border: 2px solid;
 }
-
-
-
-
-/* taken from my *intro to front-end* code*/
 
 
 .container {
@@ -85,3 +108,47 @@ section.edit {
   background-color: #999;
   display:none;
 }
+
+/* USER STUFF */
+
+#currentUserName {
+  width:100px;
+}
+
+#currentUserID {
+  width:200px;
+}
+
+
+automation_button {
+
+}
+
+automation_schema_red {
+  background-color:red;
+}
+
+automation_schema_orange {
+  background-color:orange;
+}
+
+automation_schema_yellow {
+  background-color:yellow;
+}
+
+automation_schema_green {
+  background-color:green;
+}
+
+automation_schema_blue {
+  background-color:blue;
+}
+
+automation_schema_pink {
+  background-color:violet;
+}
+
+automation_schema_gray {
+  background-color:gray;
+}
+

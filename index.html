@@ -2,52 +2,77 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>HREXT11 R00lz!</title>
+  <title>Smart Button Control Panel</title>
   <script
           src="https://code.jquery.com/jquery-3.3.1.js"
           integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
           crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Charmonman&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<h1>Smart Buttons</h1>
+<header>
 
-<h2>What's in LocalStorage?</h2>
-  <div class="container-everything">
+<button class="automate title">
+  <div id="smartbutton">Smart<br>Button</div>
+  <div id="control">control</div>
+  <div id="panel">panel</div>
+  <div id="notabutton">Leci n'est pas une bouton</div>
+</button>
 
-    <div class="container-text">
-      <label for="name">Key:</label><input type="text" id="key">
-      <label for="name">Value:</label><input type="text" id="value">
-    </div>
-    <div class="container-button">
-      <input class="input-button create" type="button" value="Create">
-    </div>
-  </div>
+</header>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Key</th>
-        <th>Value</th>
-      </tr>
-    </thead>
-    <tbody>
-    </tbody>
-  </table>
+<p>Consolidates Smart Home actions created through If This Then That (IFTTT)</p>
+
+Automations for
+<select id="currentUser">
+    <option value="gJZzNn_HHmO3cogsCTnBy_">Damien Jones</option>
+    <option selected value="gJZzNn_HHmO3cogsCTnBy_">New user...</option>
+</select>
+<button class="edit">✎</button>
+<button id="deleteUser">⛔</button>
+<section class="edit">
+    <input id="currentUserName" type="text" placeholder="User Name">
+    <input id="currentUserID" type="text" placeholder="User ID">
+    <button id="saveUser">Save</button>
+</section>
+
+<p>IFTTT automations require integrations with their <a href="https://ifttt.com/maker_webhooks" target="_blank">Webhooks</a> component.</p>
+
+<!-- <h1><
+star = "✪";
+favorite = "♥";
+not_favorite = "♡";
+
+delete = "✘⊗✖⛔";
+add = "⊕ ➕";
+edit = "✎";
+show = "";
+hide = "";
+refresh = "↻";
+test = "➟"
+</h1> -->
 
 
+<h3>What's in LocalStorage?</h3>
+
+<input type="text" placeholder="Key" id="key">
+<input type="text" placeholder="Value" id="value">
+<input class="input-button create" type="button" value="Create">
+
+<table><thead><tr><th>Key</th><th>Value</th></tr></thead><tbody></tbody></table>
 
 <h2>Button maker</h2>
-
 
   <button class="add-squares">add</button>
   <button class="clear-all">clear all</button>
 
 <div class="container">
     <div class="box">
-        <button class="automate hrext11_red" contenteditable="false">My Automation</button>
+        <button class="automate hrext11_red">My Automation</button>
         <!--Click count: <span class="click_count">0</span>-->
         <button class="edit">▶</button>
         <section class="edit">

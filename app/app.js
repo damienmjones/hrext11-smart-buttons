@@ -1,5 +1,101 @@
-//localStorage abstraction
+
+$(function() {
+  // BUTTON TO MAKE TEST USER/DATA
+  var $samplebutton = $('<a href="#" id="createSampleUser">Create Sample User</a>');
+  $samplebutton.insertAfter("#saveUser");
+
+  $('#createSampleUser').click(function() {
+    var sampleUser = new User("gJZzNn_HHmO3cogsCTnBy_", "Damien Jones")
+  })
+
+  const sampleAutomations = [
+  'hrext11_bright_white',
+  'hrext11_off',
+  'hrext11_dim_white',
+  'hrext11_pink',
+  'hrext11_red',
+  'hrext11_orange',
+  'hrext11_green_fade',
+  'hrext11_blue_blink',
+  'hrext11_disco' ]
+})
+
+
+const sampleAutomationName = "Red Mood";
+const sampleAutomationNaID = "hrext11_red";
+
+/*  */
+
+// localStorage abstraction
 const LS = window.localStorage;
+
+const create = function(key, value) {return LS.setItem(key, value);}
+
+const update = function(key, value) {
+  if (typeof value=="object") {
+    value = JSON.stringify(value)
+  }
+  return LS.setItem(key, value);
+}
+
+const get = function(key) {
+  let keyValue = LS.getItem(key)
+  try {keyValue = JSON.parse(keyValue);} catch(err) {}
+  return keyValue;
+}
+
+// USER STUFF
+const User = function (id, name) {
+  this.id = id;
+  this.name = name;
+  this.update()
+};
+
+User.prototype.update = function() {
+  $('#currentUserID').val(this.id);
+  $('#currentUserName').val(this.name);
+}
+
+
+
+//AUTOMATION STUFF
+const Automation = function (id, name, description, style) {
+  this.id = id;
+  this.name = name;
+  this.description = description;
+  this.style = style;
+};
+
+const init = function() {
+  // loadUser();
+  // loadAutomations();
+
+  refresh()
+}
+
+const refresh = function (){
+
+}
+
+// Repaint the screen with new data
+
+
+
+$(function() { // do on load
+
+  init();
+
+})
+
+
+
+
+
+
+
+
+
+
 
 // make this into an object later
 
@@ -7,9 +103,7 @@ const LS = window.localStorage;
 //   this.id
 // }
 
-const get = function(key) {return LS.getItem(key);}
-const create = function(key, value) {return LS.setItem(key, value);}
-const update = function(key, value) {return LS.setItem(key, value);}
+
 const remove = function(key) {return LS.removeItem(key);}
 const count = function(key) {return LS.length;}
 const getKey = function(index) {return LS.key(index)}
@@ -22,7 +116,7 @@ const  displayData = function() {
     $('tbody').append(
       `<tr>
         <td>${getKey(i)}</td>
-        <td>${get(getKey(i))}</td>
+        <td>${JSON.stringify(get(getKey(i)))}</td>
       </tr>`
     )
   }
