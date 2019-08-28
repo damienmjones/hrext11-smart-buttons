@@ -3,133 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <title>Smart Button Control Panel</title>
-  <script
-          src="https://code.jquery.com/jquery-3.3.1.js"
-          integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-          crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Charmonman&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 <header>
-
-<button class="automate title">
-  <div id="smartbutton">Smart<br>Button</div>
-  <div id="control">control</div>
-  <div id="panel">panel</div>
-  <div id="notabutton">Leci n'est pas une bouton</div>
-</button>
-
+  <h1>Smart Buttons</h1>
 </header>
 
-<p>Consolidates Smart Home actions created through If This Then That (IFTTT)</p>
-
-Automations for
-<select id="currentUser">
-    <option value="gJZzNn_HHmO3cogsCTnBy_">Damien Jones</option>
-    <option selected value="gJZzNn_HHmO3cogsCTnBy_">New user...</option>
-</select>
-<button class="edit">✎</button>
-<button id="deleteUser">⛔</button>
-<section class="edit">
-    <input id="currentUserName" type="text" placeholder="User Name">
-    <input id="currentUserID" type="text" placeholder="User ID">
-    <button id="saveUser">Save</button>
+<section id="data_entry">
+  <input type="text" placeholder="Key" id="key">
+  <input type="text" placeholder="Value" id="value">
+  <input class="input-button create" type="button" value="Create">
 </section>
 
-<p>IFTTT automations require integrations with their <a href="https://ifttt.com/maker_webhooks" target="_blank">Webhooks</a> component.</p>
+<section id="buttons">
 
-<!-- <h1><
-star = "✪";
-favorite = "♥";
-not_favorite = "♡";
+</section>
 
-delete = "✘⊗✖⛔";
-add = "⊕ ➕";
-edit = "✎";
-show = "";
-hide = "";
-refresh = "↻";
-test = "➟"
-</h1> -->
+<section id="testdata">
+hrext11_orange<br>
+hrext11_dim_white<br>
+hrext11_bright_white<br>
+hrext11_pink<br>
+hrext11_red<br>
+hrext11_green_fade<br>
+hrext11_blue_blink<br>
+hrext11_disco<br>
+</section>
 
+<script src="app/app.js"></script>
+<script src="app/data.js"></script>
 
-<h3>What's in LocalStorage?</h3>
-
-<input type="text" placeholder="Key" id="key">
-<input type="text" placeholder="Value" id="value">
-<input class="input-button create" type="button" value="Create">
-
-<table><thead><tr><th>Key</th><th>Value</th></tr></thead><tbody></tbody></table>
-
-<h2>Button maker</h2>
-
-  <button class="add-squares">add</button>
-  <button class="clear-all">clear all</button>
-
-<div class="container">
-    <div class="box">
-        <button class="automate hrext11_red">My Automation</button>
-        <!--Click count: <span class="click_count">0</span>-->
-        <button class="edit">▶</button>
-        <section class="edit">
-        <p>
-          <label for="something">Label</label>
-          <input type = "text" value="My Automation"/>
-        </p>
-        <p>
-          <label for="something">IFTTT ID</label>
-          <input class="id" type = "text" value="hrext11_red">
-
-          <select class="id">
-              <option >hrext11_orange</option>
-              <option >hrext11_dim_white</option>
-              <option >hrext11_bright_white</option>
-              <option >hrext11_pink</option>
-              <option >hrext11_red</option>
-              <option >hrext11_green_fade</option>
-              <option >hrext11_blue_blink</option>
-              <option >hrext11_disco</option>
-            </select>
-
-          <span class="test">Test</span>
-        </p>
-        <p>
-        <select>
-          <label for="something">Color</label>
-          <option class="white" value="white">White (default)</option>
-          <option class="yellow" value="yellow">Yellow</option>
-          <option class="orange" value="orange">Orange</option>
-          <option class="red" value="red">Red</option>
-          <option class="pink" value="pink">Pink</option>
-          <option class="green" value="green">Green</option>
-          <option class="blue" value="blue">Blue</option>
-          <option class="rainbow" value="rainbow">Rainbow</option>
-        </select>
-        </p>
-        <p>
-          <button class="delete">Delete</button>
-          <button class="cancel">Cancel</button>
-          <button class="save">Save</button>
-        </p>
-      </section>
-    </div>
-</div>
-
-</main>
-
-<!-- hrext11_orange
-hrext11_dim_white
-hrext11_bright_white
-hrext11_pink
-hrext11_red
-hrext11_green_fade
-hrext11_blue_blink
-hrext11_disco-->
-
-  <script src="app/app.js"></script>
 </body>
 </html>
