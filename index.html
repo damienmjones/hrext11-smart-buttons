@@ -14,17 +14,21 @@
 
 <section id="user">
   <b>welcome, <a href="#" id="edituser">damien</a>!</b><br>
-  <input id="ifttt_user" placeholder="Name">
-  <input id="ifttt_id" placeholder="IFTTT Code">
-  <input id="ifttt_url" placeholder="Preview URL">
+  <div class="edit">
+    <input id="ifttt_user" placeholder="Name">
+    <input id="ifttt_id" placeholder="IFTTT Code">
+    <input id="ifttt_url" placeholder="Preview URL">
+  </div>
+
 </section>
 
 <section id="data_entry">
+  some text about what this whole thing is.
   <input id="button_trigger" placeholder="New IFTTT Trigger">
-  <button id="button_create">Create</button><br>
+  <button id="button_create">Create</button>
 
   <select id="button_demo_list">
-      <option value="">or choose one from the list</option>
+      <option value="">or choose one from the list (demo)</option>
       <option value="hrext11_orange">orange</option>
       <option value="hrext11_dim_white" >dim/yellow</option>
       <option value="hrext11_bright_white" >bright white</option>
@@ -33,7 +37,7 @@
       <option value="hrext11_green_fade" >green fade</option>
       <option value="hrext11_blue_blink" >blue blinking</option>
       <option value="hrext11_disco" >disco</option>
-    </select>
+   </select>
 
 </section>
 
@@ -41,18 +45,20 @@
 
 </section>
 
-<section id="demo">
+ <section id="demo">
     <b>real-time demo</b><br>
     <iframe id="inlineFrameExample"
     title="Inline Frame Example"
     width="480"
     height="320"
-    src="http://192.168.1.20:8080/jsfs.html">
+    src="https://24.35.65.10:8080/browserfs.html">
   </iframe>
 </section>
 
 <script src="app/app.js"></script>
 <script src="app/data.js"></script>
+<!-- take this out for production -->
+<script src="app/demo.js"></script>
 
 </body>
 </html>

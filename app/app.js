@@ -1,8 +1,7 @@
-/* sample data - remove for production */
-const demo_user = "damien"
-var demo_id = "gJZzNn_HHmO3cogsCTnBy_"
-const demo_url = "http://192.168.1.20:8080/jsfs.html"
-const demo_list = '<select id="button_demo_list"><option value="">or choose one from the list</option><option value="hrext11_orange">orange</option><option value="hrext11_dim_white" >dim/yellow</option><option value="hrext11_bright_white" >bright white</option><option value="hrext11_pink" >pink</option><option value="hrext11_red" >red</option><option value="hrext11_green_fade" >green fade</option><option value="hrext11_blue_blink" >blue blinking</option><option value="hrext11_disco" >disco</option></select>'
+
+
+
+
 
 $(function() {
   displayData();
@@ -11,9 +10,7 @@ $(function() {
     createButton($(this).val());
   })
 
-  $('#button_demo_list').click(function() {
-    createButton($(this).val(), $(this).children('option:selected').text());$(this).val('');
-  })
+
 
 }) // end of document.ready
 
@@ -33,10 +30,8 @@ const displayData = function() {
 
   for (var i = 0; i < count(); i++) {
     let key = getKey(i), val=get(key);
-    if (key == "ifttt_id") {
-      $('#ifttt').val(val);
-    } else {
-      $('section#buttons').append(
+    if (key.indexOf("ifttt")) {
+      $('section#buttons').prepend(
         `<div id="${getKey(i)}"><button class="automate">${get(getKey(i))}</button> <a class="top" href="#">↥ top</a> <a class="delete" href="#">✘ delete</a> <a class="edit" href="#">✎ edit</a></div>`
       );
     }
@@ -66,11 +61,25 @@ const topButton = function($div) {
   console.log('topButton(' + id +')');
 }
 
+const colorpicker=`<select>
+<option class="white" value="white">Select a button color...</option>
+<option class="yellow" value="yellow">Yellow</option>
+<option class="orange" value="orange">Orange</option>
+<option class="red" value="red">Red</option>
+<option class="pink" value="pink">Pink</option>
+<option class="green" value="green">Green</option>
+<option class="blue" value="blue">Blue</option>
+<option class="rainbow" value="rainbow">Rainbow</option>
+</select>`
+
 const editButton = function($div) {
   const id = $div.attr('id');
   console.log('editButton(' + id +')');
-}
 
+  $div.append(
+    `<input class="name" value="button name">${colorpicker}`
+  );
+}
 
 const deleteButton = function($div) {
   const id = $div.attr('id');

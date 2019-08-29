@@ -1,4 +1,30 @@
+body, h1 {
+  margin: 0px;
+  padding: 0px;
+}
+
 section {
+  width:100%;
+  /* max-width:320px; */
   padding:10px 0;
   border-top:1px dashed gray;
+}
+
+div.edit {
+  display: none;
+}
+
+input, select, button.automate {
+  width:100%;
+}
+
+#button_trigger {
+  width:calc(100% - 70px);
+}
+
+button.automate {
+  width:calc(100% - 160px);
+  font-size:3rem;
+  border-radius:20px;
+  margin:10px 0 20px 0;
 }
