@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Smart Button Control Panel</title>
   <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
-  <link href="https://fonts.googleapis.com/css?family=Charmonman&display=swap" rel="stylesheet">
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script> -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -15,31 +13,32 @@
 </header>
 
 <section id="user">
-  <input type="text" id="ifttt" placeholder="IFTTT Code">
+  <b>welcome, <a href="#" id="edituser">damien</a>!</b><br>
+  <input id="ifttt_user" placeholder="Name">
+  <input id="ifttt_id" placeholder="IFTTT Code">
+  <input id="ifttt_url" placeholder="Preview URL">
 </section>
 
 <section id="data_entry">
-  <input type="text" placeholder="Key" id="key">
-  <input type="text" placeholder="Value" id="value">
-  <input class="input-button create" type="button" value="Create">
+  <input id="button_trigger" placeholder="New IFTTT Trigger">
+  <button id="button_create">Create</button><br>
+
+  <select id="button_demo_list">
+      <option value="">or choose one from the list</option>
+      <option value="hrext11_orange">orange</option>
+      <option value="hrext11_dim_white" >dim/yellow</option>
+      <option value="hrext11_bright_white" >bright white</option>
+      <option value="hrext11_pink" >pink</option>
+      <option value="hrext11_red" >red</option>
+      <option value="hrext11_green_fade" >green fade</option>
+      <option value="hrext11_blue_blink" >blue blinking</option>
+      <option value="hrext11_disco" >disco</option>
+    </select>
+
 </section>
 
 <section id="buttons">
 
-</section>
-
-<section id="testdata">
-  <b>sample user</b><br>
-  gJZzNn_HHmO3cogsCTnBy_<br><br>
-  <b>sample automations</b><br>
-  hrext11_orange<br>
-  hrext11_dim_white<br>
-  hrext11_bright_white<br>
-  hrext11_pink<br>
-  hrext11_red<br>
-  hrext11_green_fade<br>
-  hrext11_blue_blink<br>
-  hrext11_disco<br>
 </section>
 
 <section id="demo">
@@ -51,8 +50,6 @@
     src="http://192.168.1.20:8080/jsfs.html">
   </iframe>
 </section>
-
-
 
 <script src="app/app.js"></script>
 <script src="app/data.js"></script>
