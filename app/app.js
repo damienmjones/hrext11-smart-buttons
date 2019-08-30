@@ -20,6 +20,15 @@ $(function() {
     enableCreateButton();
   })
 
+  $('#button_trigger').keypress(function(event){
+    enableCreateButton();
+    var keycode = (event.keyCode ? event.keyCode : event.which);
+    if(keycode == '13' && $('#button_trigger').val() ){
+      new Button($('#button_trigger').val());
+    }
+
+  });
+
   $('#button_cancel').click(function() {
     putEditFieldsBack();
   })
