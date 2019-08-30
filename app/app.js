@@ -23,7 +23,8 @@ $(function() {
   })
 
   $('#button_style').change(function() {
-    $(this).parent().parent().children('.automate').addClass( $(this).val() );
+
+    $(this).parent().parent().children('.automate').removeClass('black').removeClass('white').removeClass('yellow').removeClass('orange').removeClass('red').removeClass('pink').removeClass('green').removeClass('blue').addClass( $(this).val() );
   })
 
   $('#clear').click(function() {
@@ -32,7 +33,6 @@ $(function() {
   })
 
   $('#edituser').click(function() {
-    console.log('click #edituser')
     $('#ifttt_user').val( get('ifttt_user') )
     $('#ifttt_id').val( get('ifttt_id') )
     $('#user_edit_fields').toggle();
@@ -52,8 +52,6 @@ $(function() {
 const loadUser = function(){
   let user = get('ifttt_user');
   let id = get('ifttt_id');
-  console.log('id'+id)
-  console.log('user'+user)
   if(id===null){
     set('ifttt_id',demo_id||"")
   }
@@ -87,7 +85,7 @@ const createButton = function(id, val) {
     // then open the edit part
 }
 
-const refreshButtons = function() {   console.log('refreshButtons')
+const refreshButtons = function() {
   var buttonList = get('buttons') || [];
   $('section#buttons').html('');
   buttonList.forEach(function(button) {
@@ -127,11 +125,8 @@ const bindButtonEvents = function() {
 }
 
 
-
 const deleteButton = function($div) {
-  const id = $div.attr('id');
-  console.log('deleteButton(' + id +')');
-  remove(id);
+  remove($div.attr('id'));
   refreshButtons();
 }
 
@@ -140,7 +135,7 @@ const automateButton = function($div) {
     const makerKey =  get('ifttt_id');
     const makerURL = `https://maker.ifttt.com/trigger/${makerAutomation}/with/key/${makerKey}`;
     //console.log('ajax: '+makerURL);
-    console.log($.ajax({url: makerURL}));
+    $.ajax({url: makerURL});
 }
 
 
