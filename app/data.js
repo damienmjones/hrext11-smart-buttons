@@ -1,6 +1,7 @@
 const buttons= [];
 const LS = window.localStorage;
 
+
 const set = function(key, value) {
   LS.setItem(key, JSON.stringify(value));
 }
@@ -74,6 +75,7 @@ const updateButtonStyle = function(id, name) {
   refreshButtons();
 
 }
+
 
 // BUTTON STUFF
 const Button = function (id, name, style) {

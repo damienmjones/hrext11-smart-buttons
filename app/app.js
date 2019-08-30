@@ -1,5 +1,6 @@
 $(function() {
 
+  loadUser();
   refreshButtons();
   $('#button_create').click(function() {
     new Button($('#button_trigger').val());
@@ -17,13 +18,60 @@ $(function() {
     refreshButtons();
   })
 
+  $('#button_name').keydown(function() {
+    $(this).parent().parent().children('.automate').text( $(this).val() );
+  })
+
+  $('#button_style').change(function() {
+    $(this).parent().parent().children('.automate').addClass( $(this).val() );
+  })
+
   $('#clear').click(function() {
-    alert('clear')
     LS.clear();
     refreshButtons();
   })
 
+  $('#edituser').click(function() {
+    console.log('click #edituser')
+    $('#ifttt_user').val( get('ifttt_user') )
+    $('#ifttt_id').val( get('ifttt_id') )
+    $('#user_edit_fields').toggle();
+  })
+
+  $('#saveuser').click(function() {
+    saveUser();
+    $('#user_edit_fields').toggle();
+  })
+  $('#canceluser').click(function() {
+    saveUser();
+    $('#user_edit_fields').toggle();
+  })
+
 }) // end of document.ready
+
+const loadUser = function(){
+  let user = get('ifttt_user');
+  let id = get('ifttt_id');
+  console.log('id'+id)
+  console.log('user'+user)
+  if(id===null){
+    set('ifttt_id',demo_id||"")
+  }
+  if(user===null){
+    set('ifttt_user',demo_user||"New User")
+  }
+  $('#edituser').text(get('ifttt_user'));
+  $('#ifttt_user').val( get('ifttt_user') )
+  $('#ifttt_id').val( get('ifttt_id') )
+
+}
+
+const saveUser = function() {
+  set('ifttt_id', $('#ifttt_id').val());
+  set('ifttt_user', $('#ifttt_user').val());
+  $('#edituser').text($('#ifttt_user').val());
+}
+
 
 const putEditFieldsBack = function() {
   const $edit = $('#edit');
@@ -31,7 +79,6 @@ const putEditFieldsBack = function() {
 }
 
 const createButton = function(id, val) {
-  alert(id);
     if (get(id) !== null) {
       alert('trigger already exists');return;
     }
@@ -63,7 +110,7 @@ const bindButtonEvents = function() {
     $(this).parent().append($edit); // and move it to right after this edit the user just clicked on
     let name = getProp('buttons',id,'name'); // get the current button's name
     console.log(name)
-    $('#button_name').val(name); // write it to the name edit boc
+    $('#button_name').val(name); // write it to the name edit box
     let style = getProp('buttons',id,'style'); // get the current button's style
     console.log(style)
     if (style) {$('#button_style').val(style)} // write it to the style select box
@@ -81,15 +128,6 @@ const bindButtonEvents = function() {
 
 
 
-
-
-
-
-
-
-
-
-
 const deleteButton = function($div) {
   const id = $div.attr('id');
   console.log('deleteButton(' + id +')');
@@ -98,9 +136,8 @@ const deleteButton = function($div) {
 }
 
 const automateButton = function($div) {
-  //makerKey = get('ifttt)
     const makerAutomation = $div.attr('id')
-    const makerKey = 'gJZzNn_HHmO3cogsCTnBy_-UNg1rOYaqo579Lepel7b';
+    const makerKey =  get('ifttt_id');
     const makerURL = `https://maker.ifttt.com/trigger/${makerAutomation}/with/key/${makerKey}`;
     //console.log('ajax: '+makerURL);
     console.log($.ajax({url: makerURL}));

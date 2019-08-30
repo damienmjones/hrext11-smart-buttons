@@ -26,4 +26,44 @@ button.automate {
   border-radius:20px;
   margin:5px 0 5px 0;
 }
+
+
+/*colors
+white
+yellow
+orange
+red
+pink
+green
+blue
+
+
+
 */
+
+
+.yellow {
+  background-color: #F2E926
+}
+
+.orange {
+  background-color: #FA9600
+}
+
+.pink {
+  background-color: #b660c5
+}
+
+.green {
+  background-color: #45BF55;
+}
+
+.blue {
+  background-color: #1B76FF;
+}
+
+.red {
+  background-color: #f33c40;
+}
+
+

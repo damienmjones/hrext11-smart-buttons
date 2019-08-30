@@ -1,6 +1,5 @@
-const demo_user = "damien"
-var demo_id = "gJZzNn_HHmO3cogsCTnBy_"
-const demo_url = "http://192.168.1.20:8080/jsfs.html"
+const demo_user = "Damien";
+const demo_id = "gJZzNn_HHmO3cogsCTnBy_-UNg1rOYaqo579Lepel7b";
 const demo_list = `
 <select id="button_demo_list">
 <option value="">or choose one from the list (demo)</option>
@@ -15,7 +14,6 @@ const demo_list = `
 </select>`
 
 $(function() {
-
   $('section#data_entry').append(demo_list);
   $('#button_demo_list').change(function() {
     new Button($(this).val(),$(this).children('option:selected').text()) ;
