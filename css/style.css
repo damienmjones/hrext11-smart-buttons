@@ -30,7 +30,23 @@ section.edit, div.edit {
 }
 
 button {
-  border-radius:10px;
+  border-radius:5px;
+}
+
+
+#user_edit_fields input {
+  margin-bottom:10px;
+}
+#user_edit_fields input:first-child {
+  margin-top:10px;
+}
+
+#button_name, #button_style {
+  width:200px;margin:5px;
+}
+
+#button_style {
+  margin-bottom:10px;
 }
 
 

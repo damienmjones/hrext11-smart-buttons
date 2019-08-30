@@ -12,7 +12,7 @@ const demo_list = `
 <option value="hrext11_Green_Fade" >Green Fade</option>
 <option value="hrext11_blue_blink" >Blue Blinking</option>
 <option value="hrext11_disco" >Disco</option>
-</select>`
+</select>&nbsp;`
 
 $(function() {
   $('#button_trigger').before(demo_list);

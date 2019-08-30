@@ -83,6 +83,7 @@ const Button = function (id, name, style) {
   this.name = name || id;
   this.style = style || "";
   this.save()
+   editButton($('#buttons .edit:first'));
 };
 
 Button.prototype.setName = function(name) {

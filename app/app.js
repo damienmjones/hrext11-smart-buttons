@@ -3,6 +3,9 @@ $(function() {
   enableCreateButton()
   loadUser();
   refreshButtons();
+
+  $('#button_trigger').select();
+
   $('#button_create').click(function() {
     let val = $('#button_trigger').val();
     if(val) {
@@ -47,6 +50,7 @@ $(function() {
     $('#ifttt_user').val( get('ifttt_user') )
     $('#ifttt_id').val( get('ifttt_id') )
     $('#user_edit_fields').toggle();
+    $('#ifttt_user').select();
   })
 
   $('#saveuser').click(function() {
@@ -116,21 +120,7 @@ const refreshButtons = function() {
 const bindButtonEvents = function() {
   console.log('bindButtonEvents')
   $('a.edit').click(function() {
-    console.log('edit');
-
-    if( $(this).siblings('#edit').length ){
-        putEditFieldsBack(); return;
-     }
-    $div = $(this).parent() // get the enclosing element for the button block
-    const id = $div.attr('id'); // get the id of that block
-    const $edit = $('#edit'); // find the editor window, wherever it is
-    $(this).parent().append($edit); // and move it to right after this edit the user just clicked on
-    let name = getProp('buttons',id,'name'); // get the current button's name
-    console.log(name)
-    $('#button_name').val(name); // write it to the name edit box
-    let style = getProp('buttons',id,'style'); // get the current button's style
-    console.log(style)
-    if (style) {$('#button_style').val(style)} // write it to the style select box
+    editButton($(this));
   })
   $('a.delete').click(function() {
      deleteObj('buttons',$(this).parent().attr('id'));
@@ -141,6 +131,24 @@ const bindButtonEvents = function() {
   $('button.automate').click(function() {
     automateButton( $(this).parent() );
   })
+}
+
+
+const editButton = function($this) {
+  if( $this.siblings('#edit').length ){
+      putEditFieldsBack(); return;
+   }
+  $div = $this.parent() // get the enclosing element for the button block
+  const id = $div.attr('id'); // get the id of that block
+  const $edit = $('#edit'); // find the editor window, wherever it is
+  $this.parent().append($edit); // and move it to right after this edit the user just clicked on
+  let name = getProp('buttons',id,'name'); // get the current button's name
+  console.log(name)
+  $('#button_name').val(name); // write it to the name edit box
+  let style = getProp('buttons',id,'style'); // get the current button's style
+  console.log(style)
+  if (style) {$('#button_style').val(style)} // write it to the style select box
+  $('#button_name').select();
 }
 
 
