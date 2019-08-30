@@ -11,11 +11,6 @@ const get = function(key) {
   return obj;
 }
 
-const saveButton = function (id, name, style) {
-
-
-}
-
 const saveObj = function(category, obj) {
   const arr = get(category) || [];
   arr.push(obj); // duplicates actually ok? this could be a problem
@@ -40,13 +35,25 @@ const deleteObj = function(category,id) {
 
 const topObj = function(category,id) {
   const arr = get(category) || [];
-  // do this thing
+  const top = arr.find(function(obj){
+    return (id==obj["id"])
+  })
+  arr = arr.filter(function(obj){
+    return (id!=obj["id"])
+  })
+  arr.push(top);
+  set(category,arr);
   refreshObj(category);
 }
 
 const setProp = function(category, id, prop, val) {
   console.log(category, id, prop, val);
-  getObj(category,id)[prop] = val;
+  const arr = get(category) || [];
+  var obj = arr.find(function(obj){
+    return obj["id"]==id;
+  })
+  obj[prop] = val;
+  set(category, arr);
 }
 
 const getProp = function(category, id, prop) {

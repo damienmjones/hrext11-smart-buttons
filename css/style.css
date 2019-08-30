@@ -10,7 +10,7 @@ section {
   border-top:1px dashed gray;
 }
 
-div.edit {
+section.edit, div.edit {
   display: none;
 }
 

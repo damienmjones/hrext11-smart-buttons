@@ -1,12 +1,25 @@
 $(function() {
-  refreshButtons();
 
+  refreshButtons();
   $('#button_create').click(function() {
-    alert($('#button_trigger').val());
     new Button($('#button_trigger').val());
   })
 
+  $('#button_save').click(function() {
+    const id = $(this).parent().parent().attr('id');
+       //put the form fields back
+       const $edit = $('#edit');
+       $('#button_edit_field_template').append($edit);
+    setProp('buttons', id, 'name', $('#button_name').val())
+    setProp('buttons', id, 'style', $('#button_style').val())
+    refreshButtons();
+  })
 
+  $('#clear').click(function() {
+    alert('clear')
+    LS.clear();
+    refreshButtons();
+  })
 
 }) // end of document.ready
 
@@ -24,9 +37,11 @@ const refreshButtons = function() {   console.log('refreshButtons')
   var buttonList = get('buttons') || [];
   $('section#buttons').html('');
   buttonList.forEach(function(button) {
-    $('section#buttons').prepend(
-      `<div id="${button.id}"><button class="automate ${button.style}">${button.name}</button> <a class="top" href="#">↥ top</a> <a class="delete" href="#">✘ delete</a> <a class="edit" href="#">✎ edit</a></div>`
-    );
+    if(button) {
+        $('section#buttons').prepend(
+          `<div id="${button.id}"><button class="automate ${button.style}">${button.name}</button> <a class="top" href="#">↥ top</a> <a class="delete" href="#">✘ delete</a> <a class="edit" href="#">✎ edit</a></div>`
+        );
+    }
   })
   bindButtonEvents();
 }
@@ -34,49 +49,39 @@ const refreshButtons = function() {   console.log('refreshButtons')
 const bindButtonEvents = function() {
   console.log('bindButtonEvents')
   $('a.edit').click(function() {
-    editButton( $(this).parent() );
-  })
-  $('.button_name').change(function() {
-    setProp('button', $(this).parent().attr('id'), 'name', $(this).val())
-  })
-  $('.button_style').click(function() {
-    setProp('style', $(this).parent().attr('id'), 'name', $(this).val())
+    console.log('edit');
+    $div = $(this).parent() // get the enclosing element for the button block
+    const id = $div.attr('id'); // get the id of that block
+    const $edit = $('#edit'); // find the editor window, wherever it is
+    $(this).parent().append($edit); // and move it to right after this edit the user just clicked on
+    let name = getProp('buttons',id,'name'); // get the current button's name
+    console.log(name)
+    $('#button_name').val(name); // write it to the name edit boc
+    let style = getProp('buttons',id,'style'); // get the current button's style
+    console.log(style)
+    if (style) {$('#button_style').val(style)} // write it to the style select box
   })
   $('a.delete').click(function() {
      deleteObj('buttons',$(this).parent().attr('id'));
   })
   $('a.top').click(function() {
-    topButton( $(this).parent() );
+        topObj('buttons',$(this).parent().attr('id'));
   })
   $('button.automate').click(function() {
     automateButton( $(this).parent() );
   })
 }
 
-const topButton = function($div) {
-  const id = $div.attr('id');
-  console.log('topButton(' + id +')');
-}
 
-const colorpicker=`<select class="button_style">
-<option class="white" value="white">Select a button color...</option>
-<option class="yellow" value="yellow">Yellow</option>
-<option class="orange" value="orange">Orange</option>
-<option class="red" value="red">Red</option>
-<option class="pink" value="pink">Pink</option>
-<option class="green" value="green">Green</option>
-<option class="blue" value="blue">Blue</option>
-<option class="rainbow" value="rainbow">Rainbow</option>
-</select>`
 
-const editButton = function($div) {
-  const id = $div.attr('id');
-  console.log('editButton(' + id +')');
 
-  $div.append(
-    `<input class="button_name" value="${getProp('buttons',id,'name')}">${colorpicker}`
-  );
-}
+
+
+
+
+
+
+
 
 const deleteButton = function($div) {
   const id = $div.attr('id');
