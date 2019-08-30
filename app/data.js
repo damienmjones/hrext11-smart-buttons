@@ -34,7 +34,7 @@ const deleteObj = function(category,id) {
 }
 
 const topObj = function(category,id) {
-  const arr = get(category) || [];
+  let arr = get(category) || [];
   const top = arr.find(function(obj){
     return (id==obj["id"])
   })

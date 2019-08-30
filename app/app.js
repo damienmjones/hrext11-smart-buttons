@@ -5,11 +5,13 @@ $(function() {
     new Button($('#button_trigger').val());
   })
 
+  $('#button_cancel').click(function() {
+    putEditFieldsBack();
+  })
+
   $('#button_save').click(function() {
     const id = $(this).parent().parent().attr('id');
-       //put the form fields back
-       const $edit = $('#edit');
-       $('#button_edit_field_template').append($edit);
+    putEditFieldsBack();
     setProp('buttons', id, 'name', $('#button_name').val())
     setProp('buttons', id, 'style', $('#button_style').val())
     refreshButtons();
@@ -22,6 +24,11 @@ $(function() {
   })
 
 }) // end of document.ready
+
+const putEditFieldsBack = function() {
+  const $edit = $('#edit');
+  $('#button_edit_field_template').append($edit);
+}
 
 const createButton = function(id, val) {
   alert(id);
