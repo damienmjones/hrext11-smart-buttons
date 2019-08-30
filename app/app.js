@@ -1,9 +1,20 @@
 $(function() {
 
+  enableCreateButton()
   loadUser();
   refreshButtons();
   $('#button_create').click(function() {
-    new Button($('#button_trigger').val());
+    let val = $('#button_trigger').val();
+    if(val) {
+      new Button($('#button_trigger').val());
+    }
+  })
+
+  $('#button_trigger').mouseup(function() {
+    enableCreateButton();
+  })
+  $('#button_trigger').change(function() {
+    enableCreateButton();
   })
 
   $('#button_cancel').click(function() {
@@ -40,13 +51,18 @@ $(function() {
 
   $('#saveuser').click(function() {
     saveUser();
-    //$('#user_edit_fields').toggle();
+    $('#user_edit_fields').toggle();
   })
   $('#canceluser').click(function() {
-    //$('#user_edit_fields').toggle();
+    $('#user_edit_fields').toggle();
   })
 
 }) // end of document.ready
+
+
+const enableCreateButton = function(){
+  $('#button_create').prop('disabled', (!$('#button_trigger').val()));
+}
 
 const loadUser = function(){
   let user = get('ifttt_user');
@@ -102,9 +118,9 @@ const bindButtonEvents = function() {
   $('a.edit').click(function() {
     console.log('edit');
 
-    // if(){
-
-    // }
+    if( $(this).siblings('#edit').length ){
+        putEditFieldsBack(); return;
+     }
     $div = $(this).parent() // get the enclosing element for the button block
     const id = $div.attr('id'); // get the id of that block
     const $edit = $('#edit'); // find the editor window, wherever it is
@@ -134,11 +150,20 @@ const deleteButton = function($div) {
 }
 
 const automateButton = function($div) {
-    const makerAutomation = $div.attr('id')
+    const re = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
+   const regex = new RegExp(re);
+     const makerAutomation = $div.attr('id')
     const makerKey =  get('ifttt_id');
-    const makerURL = `https://maker.ifttt.com/trigger/${makerAutomation}/with/key/${makerKey}`;
+    let makerURL = `https://maker.ifttt.com/trigger/${makerAutomation}/with/key/${makerKey}`;
+
+    if (makerAutomation.match(regex)) {
+      makerURL = makerAutomation
+    }
+
+
     //console.log('ajax: '+makerURL);
     $.ajax({url: makerURL});
+
 }
 
 
