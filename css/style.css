@@ -3,8 +3,18 @@ body, h1 {
   padding: 0px;
 }
 
+body{
+  align:center;
+}
+
+#main {
+
+max-width:410px;
+margin:auto;
+border:3px solid gray;
+}
+
 section {
-  width:100%;
 
   padding:10px 0;
   border-top:1px dashed gray;
@@ -23,8 +33,29 @@ section.edit, div.edit {
 button.automate {
   width:320px;
   font-size:2rem;
-  border-radius:20px;
+  border-radius:10px;
   margin:5px 0 5px 0;
+  font-weight:bold;
+}
+
+section#buttons a:link, section#buttons a:visited {
+  font-size: 2rem;
+  text-decoration: none;
+}
+section#buttons a:hover {
+
+}
+
+section#buttons a.delete {
+  color: #CD0402;
+}
+
+section#buttons a.top {
+  color: blue;
+}
+
+section#buttons a.edit {
+  color: #000;
 }
 
 .white {  background-color: #fff }

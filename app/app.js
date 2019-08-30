@@ -18,7 +18,7 @@ $(function() {
     refreshButtons();
   })
 
-  $('#button_name').keydown(function() {
+  $('#button_name').keyup(function() {
     $(this).parent().parent().children('.automate').text( $(this).val() );
   })
 
@@ -40,11 +40,10 @@ $(function() {
 
   $('#saveuser').click(function() {
     saveUser();
-    $('#user_edit_fields').toggle();
+    //$('#user_edit_fields').toggle();
   })
   $('#canceluser').click(function() {
-    saveUser();
-    $('#user_edit_fields').toggle();
+    //$('#user_edit_fields').toggle();
   })
 
 }) // end of document.ready
@@ -91,7 +90,7 @@ const refreshButtons = function() {
   buttonList.forEach(function(button) {
     if(button) {
         $('section#buttons').prepend(
-          `<div id="${button.id}"><button class="automate ${button.style}">${button.name}</button> <a class="top" href="#">↥ top</a> <a class="delete" href="#">✘ delete</a> <a class="edit" href="#">✎ edit</a></div>`
+          `<div id="${button.id}"><a class="top" href="#">↥</a><button class="automate ${button.style}">${button.name}</button>  <a class="delete" href="#">✘</a> <a class="edit" href="#">✎</a></div>`
         );
     }
   })
@@ -102,6 +101,10 @@ const bindButtonEvents = function() {
   console.log('bindButtonEvents')
   $('a.edit').click(function() {
     console.log('edit');
+
+    // if(){
+
+    // }
     $div = $(this).parent() // get the enclosing element for the button block
     const id = $div.attr('id'); // get the id of that block
     const $edit = $('#edit'); // find the editor window, wherever it is

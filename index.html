@@ -8,29 +8,43 @@
 </head>
 <body>
 
-<header>
-  <h1>Smart Buttons</h1>
-</header>
+<section id="main">
+    <header>
+        <h1>Smart Buttons</h1>
+      </header>
+      <section id="user">
+          <b>welcome, <a href="#" id="edituser">New User</a>!</b>
+          <!-- <button id="clear">clear</button> -->
+          <br>
+          <div id="user_edit_fields" class="edit">
+            <input id="ifttt_user" placeholder="Name">
+            <input id="ifttt_id" placeholder="IFTTT Code">
+            <button id="canceluser">Cancel</button>
+            <button id="saveuser">Save</button>
+          </div>
 
-<section id="user">
-  <b>welcome, <a href="#" id="edituser">New User</a>!</b>
-  <!-- <button id="clear">clear</button> -->
-  <br>
-  <div id="user_edit_fields" class="edit">
-    <input id="ifttt_user" placeholder="Name">
-    <input id="ifttt_id" placeholder="IFTTT Code">
-    <button id="canceluser">Cancel</button>
-    <button id="saveuser">Save</button>
-  </div>
+        </section>
+
+        <section id="data_entry">
+            some text about what this whole thing is.<br>
+            <input id="button_trigger" placeholder="New IFTTT Trigger (e.g. hrext11_off)">
+            <button id="button_create">Create</button>
+       </section>
+
+       <section id="buttons">
+
+        </section>
 
 </section>
 
-<section id="data_entry">
-  some text about what this whole thing is.<br>
-  <input id="button_trigger" placeholder="New IFTTT Trigger (e.g. hrext11_off)">
-  <button id="button_create">Create</button>
 
-</section>
+
+
+
+
+
+
+
 
 <section id="button_edit_field_template" class="edit">
     <div id="edit">
@@ -38,9 +52,7 @@
     </div>
 </section>
 
-<section id="buttons">
 
-</section>
 
 
 <script src="app/app.js"></script>
