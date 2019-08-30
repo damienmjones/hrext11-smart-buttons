@@ -6,14 +6,17 @@ body, h1 {
 
 body{
   align:center;
+  background-color:#eee;
 }
 
 #main {
-
-max-width:410px;
+background-color:#fff;
+max-width:430px;
 margin:auto;
-border:3px solid gray;
+border:2px solid #666;
 text-align: center;
+padding:10px;
+border-radius:20px;
 }
 
 section {
@@ -58,16 +61,21 @@ section#buttons a:link, section#buttons a:visited {
   text-decoration: none;
 }
 
+#introtext {
+  font-size:.75rem;font-style:oblique;margin-bottom:10px;
+}
 
-section#buttons a.delete {
+
+section#buttons a.delete, a:hover {
   color: #CD0402;
 }
 
-section#buttons a.top {
+section#buttons a.top, a:visited, a:link {
   color: blue;
 }
 
-section#buttons a.edit {
+
+section#buttons a.edit, section#buttons a.edit:hover {
   color: #000;
 }
 
